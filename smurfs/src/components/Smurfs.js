@@ -1,18 +1,27 @@
 import React, { useEffect } from "react";
 import Smurf from "./Smurf";
+import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { axiosAction } from "../actions";
+import { axiosAction, addSmurf, deleteData } from "../actions";
 
 function Smurfs(props) {
   useEffect(() => {
     props.axiosAction();
-  }, [axiosAction]);
+  }, [axiosAction, addSmurf, deleteData]);
   console.log(props);
   return (
     <div>
-      {" "}
-      {props.smurfs ? props.smurfs.map(item => <Smurf smurf={item} />) : null}
+      <Link className="addnew" to="/addNewSmurf">
+        Add New Smurf
+      </Link>{" "}
+      <div className="allsmurfs">
+        {props.smurfs
+          ? props.smurfs.map(item => (
+              <Smurf smurf={item} smurfClick={props.smurfClick} key={item.id} />
+            ))
+          : null}
+      </div>
     </div>
   );
 }
@@ -23,5 +32,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { axiosAction }
+  { axiosAction, addSmurf, deleteData }
 )(Smurfs);

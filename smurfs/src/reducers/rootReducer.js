@@ -4,7 +4,10 @@ import {
   FETCH_FAILD,
   POST_LOAD,
   POST_START,
-  POST_FAILD
+  POST_FAILD,
+  DELETE_LOAD,
+  DELETE_START,
+  DELETE_FAILD
 } from "../actions";
 
 const initiallstate = {

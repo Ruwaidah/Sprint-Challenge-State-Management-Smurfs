@@ -12,20 +12,25 @@ export default function AddsmurfForm(props) {
 
   const onSubmit = event => {
     event.preventDefault();
-    props.onSubmit(values);
+    console.log(event);
+    props.onSubmit(values, props.back);
   };
 
   return (
-    <div>
+    <div className="newsmurfform">
       <form onSubmit={onSubmit}>
-        <label>Name</label>
-        <input placeholder="name" name="name" onChange={onChange} />
-
-        <label>Age</label>
-        <input placeholder="age" name="age" onChange={onChange} />
-
-        <label>Height</label>
-        <input placeholder="height" name="height" onChange={onChange} />
+        <div>
+          <label>Name</label>
+          <input placeholder="name" name="name" onChange={onChange} />
+        </div>
+        <div>
+          <label>Age</label>
+          <input placeholder="age" name="age" onChange={onChange} />
+        </div>
+        <div>
+          <label>Height</label>
+          <input placeholder="height" name="height" onChange={onChange} />
+        </div>
         <button type="submit">Add Smurf</button>
       </form>
     </div>
